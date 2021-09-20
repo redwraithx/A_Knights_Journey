@@ -3,21 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0cd3d2fd-7916-4052-b0be-45017a1fee0a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.A_Knights_Journey/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.A_Knights_Journey/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art_and_Effects_Assets/StoneKeep/Prefabs/Door_a.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_and_Effects_Assets/StoneKeep/Prefabs/Door_a.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art_and_Effects_Assets/StoneKeep/Prefabs/Door_b.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art_and_Effects_Assets/StoneKeep/Prefabs/Door_b.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Bandit_Archer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Bandit_Archer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Bandit_Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Bandit_Boss.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Bandit_Guard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Enemies/Bandit_Guard.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AILogic/EnemyAttributes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AILogic/EnemyAttributes.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BanditArcher/BanditArcher_Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BanditArcher/BanditArcher_Movement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BanditArcher/BanditArcher_Vision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BanditArcher/BanditArcher_Vision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BanditBoss/BanditBoss_Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BanditBoss/BanditBoss_Movement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BanditBoss/BanditBoss_Vision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BanditBoss/BanditBoss_Vision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BanditGuard/BanditGuard_Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BanditGuard/BanditGuard_Movement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BanditGuard/BanditGuard_Vision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BanditGuard/BanditGuard_Vision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BanditThug/BanditThug_Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BanditThug/BanditThug_Movement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BanditThug/BanditThug_Vision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BanditThug/BanditThug_Vision.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FollowPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FollowPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/KinematicInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/KinematicInput.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +63,7 @@
       <workItem from="1630260289602" duration="21951000" />
       <workItem from="1631510240062" duration="7364000" />
       <workItem from="1631686380130" duration="1988000" />
-      <workItem from="1632071030940" duration="10880000" />
+      <workItem from="1632071030940" duration="18892000" />
     </task>
     <servers />
   </component>

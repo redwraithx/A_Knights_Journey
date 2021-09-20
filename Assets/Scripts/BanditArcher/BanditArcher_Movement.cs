@@ -78,17 +78,17 @@ public class BanditArcher_Movement : MonoBehaviour
             
         }
         
-        var visionRef = GetComponent<BanditThug_Vision>(); 
+        //var visionRef = GetComponent<BanditArcher_Vision>(); 
         //var playerRef = visionRef.player.GetComponent<PlayerMovement>();
 
-        if (visionRef.ConeOfVision() && Vector3.Distance(transform.position, visionRef.player.position) > visionRef.rangeOfVision)
+        if (banditArcherVision.ConeOfVision() && Vector3.Distance(transform.position, banditArcherVision.player.position) > banditArcherVision.rangeOfVision)
         {
             Debug.Log("targetObject null returning");
             return;
         }
             
         
-        targetObject = visionRef.targetObject;
+        targetObject = banditArcherVision.targetObject;
         
         AIHelpers.InputParameters inputData = new AIHelpers.InputParameters(gameObject.transform, targetObject.transform, Time.deltaTime, maxSpeed);
         AIHelpers.MovementResult movementResult = new AIHelpers.MovementResult();
@@ -122,7 +122,7 @@ public class BanditArcher_Movement : MonoBehaviour
         }
         
         
-        var distance = Vector3.Distance(transform.position, visionRef.player.position);
+        var distance = Vector3.Distance(transform.position, banditArcherVision.player.position);
         
         //anim.SetFloat(MoveSpeed, banditThugVision.ActiveMovementBehavior != AIHelpers.MovementBehaviors.Idle ? 1f : 0f);
         
@@ -149,11 +149,11 @@ public class BanditArcher_Movement : MonoBehaviour
         // }
         // // may do reverse checks here, to minimize checks
         // else 
-        if (visionRef.activeEnemyState == CurrentState.Attack)// || visionRef.activeEnemyState == CurrentState.Fleeing || visionRef.activeEnemyState == CurrentState.Patrolling)
+        if (banditArcherVision.activeEnemyState == CurrentState.Attack)// || visionRef.activeEnemyState == CurrentState.Fleeing || visionRef.activeEnemyState == CurrentState.Patrolling)
         {
-            if (visionRef.ConeOfVision() && visionRef.rayToPlayer.collider != null)
+            if (banditArcherVision.ConeOfVision() && banditArcherVision.rayToPlayer.collider != null)
             {
-                if (visionRef.rayToPlayer.collider.CompareTag("Player"))
+                if (banditArcherVision.rayToPlayer.collider.CompareTag("Player"))
                 {
                     Debug.Log("ray to player is not null, rotating Archer");
         
@@ -167,21 +167,21 @@ public class BanditArcher_Movement : MonoBehaviour
                 
             }
         }
-        else if (visionRef.ActiveMovementBehavior == AIHelpers.MovementBehaviors.ArcherKinematic && visionRef.activeEnemyState == CurrentState.Attack)
+        else if (banditArcherVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.ArcherKinematic && banditArcherVision.activeEnemyState == CurrentState.Attack)
         {
             Debug.Log("ARCHER Movement: Rotate toward the player");
 
-            if (visionRef.ConeOfVision())
+            if (banditArcherVision.ConeOfVision())
             {
-                if (visionRef.rayToPlayer.collider != null)
+                if (banditArcherVision.rayToPlayer.collider != null)
                 {
-                    if (visionRef.rayToPlayer.collider.CompareTag("Wall"))
+                    if (banditArcherVision.rayToPlayer.collider.CompareTag("Wall"))
                     {
                         Debug.Log("ARCHER Movement: player is behind a wall, returning to idle");
                         
                         anim.SetTrigger(Idle);
                     }
-                    else if (visionRef.rayToPlayer.collider.CompareTag("Player"))
+                    else if (banditArcherVision.rayToPlayer.collider.CompareTag("Player"))
                     {
                         Debug.Log("ARCHER Movement: sees player rotate toward them");
                         
@@ -195,12 +195,12 @@ public class BanditArcher_Movement : MonoBehaviour
             }
             else
             {
-                if (visionRef.activeEnemyState != CurrentState.Idle)
+                if (banditArcherVision.activeEnemyState != CurrentState.Idle)
                     anim.SetTrigger(Idle);
                 
             }
         }
-        else if(visionRef.ActiveMovementBehavior == AIHelpers.MovementBehaviors.ArcherKinematic && visionRef.activeEnemyState == CurrentState.Idle && isRotatingAfterReturningToOrigin) // USE ORIGIN STATE
+        else if(banditArcherVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.ArcherKinematic && banditArcherVision.activeEnemyState == CurrentState.Idle && isRotatingAfterReturningToOrigin) // USE ORIGIN STATE
         {
             Debug.Log("rotating back to origin");
             
@@ -309,27 +309,27 @@ public class BanditArcher_Movement : MonoBehaviour
         //     
         // }
         //else 
-        if (visionRef.activeEnemyState != CurrentState.Idle || visionRef.activeEnemyState != CurrentState.BackToOrigin)// && !gameObject.CompareTag("EnemyBoo"))
+        if (banditArcherVision.activeEnemyState != CurrentState.Idle || banditArcherVision.activeEnemyState != CurrentState.BackToOrigin)// && !gameObject.CompareTag("EnemyBoo"))
         {
-            if(visionRef.ConeOfVision())
+            if(banditArcherVision.ConeOfVision())
             {
-                if (visionRef.rayToPlayer.collider != null)
+                if (banditArcherVision.rayToPlayer.collider != null)
                 {
                     Debug.Log("ray to player is not null");
 
-                    if (!visionRef.rayToPlayer.transform.CompareTag("Wall") && distance >= 0.5f)
+                    if (!banditArcherVision.rayToPlayer.transform.CompareTag("Wall") && distance >= 0.5f)
                     {
                         Debug.Log("ray to player, not hitting a wall, shoot at player");
 
-                        if (visionRef.activeEnemyState != CurrentState.Attack)
-                            visionRef.activeEnemyState = CurrentState.Attack;
+                        if (banditArcherVision.activeEnemyState != CurrentState.Attack)
+                            banditArcherVision.activeEnemyState = CurrentState.Attack;
                     }
                     
                 }
             }
         }
         
-        if(visionRef.activeEnemyState == CurrentState.Idle)
+        if(banditArcherVision.activeEnemyState == CurrentState.Idle)
         {
             
         }

@@ -45,8 +45,8 @@ public class FollowPlayer : MonoBehaviour
          correctedDistance = distance;
  
          // Make the rigid body not change rotation
-         if (this.gameObject.GetComponent<Rigidbody>())
-             this.gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+         if (gameObject.GetComponent<Rigidbody>())
+             gameObject.GetComponent<Rigidbody>().freezeRotation = true;
      }
 
      private void Update()

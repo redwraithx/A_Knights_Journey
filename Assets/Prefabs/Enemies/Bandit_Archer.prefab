@@ -980,7 +980,7 @@ MonoBehaviour:
   rangeOfVision: 40
   localForward: {fileID: 1488004896084796695}
   localShotForwardDirection: {fileID: 1488004896768772112}
-  enemyMovement: {fileID: 0}
+  enemyMovement: {fileID: 5455218697723775738}
   enemyAttributes: {fileID: 1758406341803317168}
   ActiveMovementBehavior: 6
   activeEnemyState: 0

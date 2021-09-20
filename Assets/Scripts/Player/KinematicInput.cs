@@ -21,7 +21,7 @@ public class KinematicInput : MonoBehaviour
     [Header("UI References")]
     // UI References
     public GameObject gameOverWinUI = null;
-    public GameObject playerHealthUICOntainer = null;
+    public GameObject playerHealthUiContainer = null;
     
     //[Header("Enemy References")]
     // enemy3 boo
@@ -137,7 +137,7 @@ public class KinematicInput : MonoBehaviour
         if (!gameOverWinUI)
             throw new Exception("Error missing gameOverWinUI reference");
 
-        if (!playerHealthUICOntainer)
+        if (!playerHealthUiContainer)
             throw new Exception("Error missing playerHealthUIContainer reference");
 
         if (!playersForwardDirectionNode)
@@ -425,6 +425,8 @@ public class KinematicInput : MonoBehaviour
         Vector3 movementDirection = targetPosition - rigidBody.position;
         movementDirection.y = 0f;
         movementDirection.Normalize();
+
+    
             
         Vector3 currentFacingXZ = transform.forward;
         currentFacingXZ.y = 0.0f;
@@ -633,7 +635,7 @@ public class KinematicInput : MonoBehaviour
         Cursor.visible = true;
         
         // disable player health ui
-        playerHealthUICOntainer.SetActive(false);
+        playerHealthUiContainer.SetActive(false);
         
         // LOAD YOU WIN UI
         gameOverWinUI.SetActive(true);
