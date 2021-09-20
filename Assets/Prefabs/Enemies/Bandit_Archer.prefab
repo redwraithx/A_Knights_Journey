@@ -886,6 +886,7 @@ GameObject:
   - component: {fileID: 7371417699870703205}
   - component: {fileID: 1758406341803317168}
   - component: {fileID: 1758406341803317169}
+  - component: {fileID: 5455218697723775738}
   - component: {fileID: 1758406341803317171}
   - component: {fileID: 5029642515611293554}
   - component: {fileID: 1488004896708021440}
@@ -950,6 +951,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae9700941a96464286b63d33c86c2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  canHearPlayerRange: 15
   attackDamage: 5
   attackRange: 35
   attackSpeed: 0.2
@@ -977,9 +980,37 @@ MonoBehaviour:
   rangeOfVision: 40
   localForward: {fileID: 1488004896084796695}
   localShotForwardDirection: {fileID: 1488004896768772112}
+  enemyMovement: {fileID: 0}
+  enemyAttributes: {fileID: 1758406341803317168}
   ActiveMovementBehavior: 6
   activeEnemyState: 0
   targetObject: {fileID: 0}
+--- !u!114 &5455218697723775738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758406341803317170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e43c463764578747add5be60d453830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  banditArcherVision: {fileID: 1758406341803317169}
+  targetObject: {fileID: 0}
+  originPoint: {x: 0, y: 0, z: 0}
+  originRotation: {x: 0, y: 0, z: 0, w: 1}
+  originForwardPoint: {x: 0, y: 0, z: 0}
+  isRotatingAfterReturningToOrigin: 0
+  pointProximityRange: 1
+  maxSpeed: 3
+  animSpeed: 0
+  canHitPlayer: 0
+  hasHitPlayer: 0
+  enemyAttributes: {fileID: 1758406341803317168}
+  anim: {fileID: 5029642515611293554}
+  rigidBody: {fileID: 1488004896708021440}
 --- !u!114 &1758406341803317171
 MonoBehaviour:
   m_ObjectHideFlags: 0

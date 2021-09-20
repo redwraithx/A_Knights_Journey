@@ -7,7 +7,7 @@ using EnemyStates;
 
 public class BanditArcher_Movement : MonoBehaviour
 {
-    public BanditArcher_Vision banditThugVision = null;
+    public BanditArcher_Vision banditArcherVision = null;
     
     public GameObject targetObject;
 
@@ -33,15 +33,15 @@ public class BanditArcher_Movement : MonoBehaviour
 
     void Start()
     {
-        banditThugVision = GetComponent<BanditArcher_Vision>();
+        banditArcherVision = GetComponent<BanditArcher_Vision>();
         
         enemyAttributes = GetComponent<EnemyAttributes>();
 
-        targetObject = banditThugVision.targetObject;
+        targetObject = banditArcherVision.targetObject;
 
         originPoint = transform.position;
         originRotation = transform.rotation;
-        originForwardPoint = transform.position + (banditThugVision.localForward.position * 2f);
+        originForwardPoint = transform.position + (banditArcherVision.localForward.position * 2f);
         
         //anim.SetTrigger("Walking");
     }
@@ -95,13 +95,13 @@ public class BanditArcher_Movement : MonoBehaviour
         
         
 
-        if (banditThugVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.SeekKinematic)
+        if (banditArcherVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.SeekKinematic)
             AIHelpers.SeekKinematic(inputData, ref movementResult);
-        else if(banditThugVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.FleeKinematic)
+        else if(banditArcherVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.FleeKinematic)
             AIHelpers.FleeKinematic(inputData, ref movementResult);
-        else if(banditThugVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.WanderKinematic)
+        else if(banditArcherVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.WanderKinematic)
             AIHelpers.WanderKinematic(inputData, ref movementResult);
-        else if (banditThugVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.BackToOriginPosKinematic)
+        else if (banditArcherVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.BackToOriginPosKinematic)
         {
             Debug.Log("set return position");
 
@@ -334,6 +334,15 @@ public class BanditArcher_Movement : MonoBehaviour
             
         }
 
+    }
+    
+    public void RotateTowardsPlayer()
+    {
+        var lookingDirection = GameManager.Instance.playerReference.transform.position - transform.position;
+        lookingDirection.y = 0f;
+
+        var rotation = Quaternion.LookRotation(lookingDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4);
     }
     
 }

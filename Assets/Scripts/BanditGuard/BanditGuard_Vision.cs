@@ -30,7 +30,7 @@ public class BanditGuard_Vision : MonoBehaviour
     public float attackDistance = 1f;
 
     public BanditGuard_Movement enemyMovement = null;
-    public EnemyAttributes enemyHealth = null;
+    public EnemyAttributes enemyAttributes = null;
 
     // marker for players last known location
     //public GameObject lastKnownPlayersLocation = null;
@@ -80,8 +80,8 @@ public class BanditGuard_Vision : MonoBehaviour
         if (!player)
             player = GameManager.Instance.playerReference.transform;
 
-        if (!enemyHealth)
-            enemyHealth = GetComponent<EnemyAttributes>();
+        if (!enemyAttributes)
+            enemyAttributes = GetComponent<EnemyAttributes>();
         
         enemyMovement = GetComponent<BanditGuard_Movement>();
 
@@ -120,7 +120,7 @@ public class BanditGuard_Vision : MonoBehaviour
 
     private bool CanSeePlayer()
     {
-        if (enemyHealth.GetIsDeadStatus())
+        if (enemyAttributes.GetIsDeadStatus())
         {
             rayToPlayer = new RaycastHit();
             player = null;
@@ -160,6 +160,9 @@ public class BanditGuard_Vision : MonoBehaviour
 
    public bool CheckIfDead() => activeEnemyState == CurrentState.Dead || ActiveMovementBehavior == AIHelpers.MovementBehaviors.Dead;
 
+   private bool CheckForPlayerNearBy() => (Vector3.Distance(transform.position, GameManager.Instance.playerReference.transform.position) <= enemyAttributes.CanHearPlayerRange) && (Vector3.Distance(transform.position, GameManager.Instance.playerReference.transform.position) >= 2f);
+   
+   
     public bool ConeOfVision()
     {
         //if (CheckIfDead())
@@ -171,6 +174,30 @@ public class BanditGuard_Vision : MonoBehaviour
             
             return false;
         }
+        
+        
+        if (CheckForPlayerNearBy())
+        {
+            // raycast to see if there is anything blocking the player from view. if vision is blocked return false else continue to rotate
+            if (!GameManager.Instance.playerReference)
+                return false;
+            
+            RaycastHit lookForPlayer;
+            if (Physics.Raycast(transform.position, GameManager.Instance.playerReference.transform.position, out lookForPlayer, enemyAttributes.CanHearPlayerRange))
+            {
+                if (lookForPlayer.collider != null)
+                {
+                    if (!lookForPlayer.collider.gameObject.CompareTag("Player"))
+                    {
+                        return false;
+                    }
+                }
+            }
+            
+            // rotate and face the player, which will allow the enemy to attack or react
+            enemyMovement.RotateTowardsPlayer();
+        }
+        
         
         Vector3 direction = localForward.position - transform.position;
         

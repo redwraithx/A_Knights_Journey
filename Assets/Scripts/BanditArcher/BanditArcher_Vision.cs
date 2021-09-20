@@ -26,7 +26,8 @@ public class BanditArcher_Vision : MonoBehaviour
     public Transform localForward = null;
     public Transform localShotForwardDirection = null;
 
-    //public BanditThug_Movement enemyMovement = null;
+    public BanditArcher_Movement enemyMovement = null;
+    public EnemyAttributes enemyAttributes = null;
 
     #endregion // End EnemyAI_Vision_Variables
 
@@ -61,6 +62,12 @@ public class BanditArcher_Vision : MonoBehaviour
 
         if (!anim)
             anim = GetComponent<Animator>();
+
+        if (!enemyMovement)
+            enemyMovement = GetComponent<BanditArcher_Movement>();
+        
+        if (!enemyAttributes)
+            enemyAttributes = GetComponent<EnemyAttributes>();
 
         InitializeEnemyAIVision();
 
@@ -113,9 +120,43 @@ public class BanditArcher_Vision : MonoBehaviour
     // thug has no pathing
    // private void SetFirstTarget() => targetObject = pathingNodes[currentPathingNodeIndex].gameObject;
 
+   private bool CheckForPlayerNearBy() => (Vector3.Distance(transform.position, GameManager.Instance.playerReference.transform.position) <= enemyAttributes.CanHearPlayerRange) && (Vector3.Distance(transform.position, GameManager.Instance.playerReference.transform.position) >= 2f);
+   
 
     public bool ConeOfVision()
     {
+        
+        if (GetComponent<BanditArcher_Health>().isDead)
+        {
+            rayToPlayer = new RaycastHit();
+            
+            return false;
+        }
+        
+        
+        if (CheckForPlayerNearBy())
+        {
+            // raycast to see if there is anything blocking the player from view. if vision is blocked return false else continue to rotate
+            if (!GameManager.Instance.playerReference)
+                return false;
+            
+            RaycastHit lookForPlayer;
+            if (Physics.Raycast(transform.position, GameManager.Instance.playerReference.transform.position, out lookForPlayer, enemyAttributes.CanHearPlayerRange))
+            {
+                if (lookForPlayer.collider != null)
+                {
+                    if (!lookForPlayer.collider.gameObject.CompareTag("Player"))
+                    {
+                        return false;
+                    }
+                }
+            }
+            
+            // rotate and face the player, which will allow the enemy to attack or react
+            enemyMovement.RotateTowardsPlayer();
+        }
+        
+        
         Vector3 direction = localForward.position - transform.position;
         float distanceToObject = 100f;
 

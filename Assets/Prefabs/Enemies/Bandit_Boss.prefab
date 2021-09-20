@@ -1015,6 +1015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae9700941a96464286b63d33c86c2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
   attackDamage: 15
   attackRange: 1.2
   attackSpeed: 1.2
@@ -1037,6 +1038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyVisionScript: {fileID: 2793848404819872442}
   enemyAttributes: {fileID: 2793848404819872444}
+  enemiesInWaiting: []
   maxHealth: 100
   currentHealth: 0
   takeDamageDuration: 1
@@ -1044,6 +1046,9 @@ MonoBehaviour:
   isEnraged: 0
   isDead: 0
   isTakingDamage: 0
+  usedShield: 0
+  isShieldDown: 0
+  shieldObj: {fileID: 0}
 --- !u!114 &2793848404819872445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,6 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079aafff9bdc73140a0f42eabf3808ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossDoorGameObject: {fileID: 0}
   FOVInDegrees: 0
   FOVInRadians: 0
   minCosine: 0
@@ -1092,6 +1098,7 @@ MonoBehaviour:
   ActiveMovementBehavior: 1
   activeEnemyState: 0
   targetObject: {fileID: 0}
+  bossEnemyAttributes: {fileID: 0}
 --- !u!114 &2793848404819872441
 MonoBehaviour:
   m_ObjectHideFlags: 0

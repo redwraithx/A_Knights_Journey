@@ -324,6 +324,15 @@ public class BanditGuard_Movement : MonoBehaviour
 
     internal bool IsThisEnemyDead() =>  (canSeePlayer && (enemyAttributes.GetCurrentState() == CurrentState.Dead  || enemyAttributes.GetCurrentMovementBehavior() == AIHelpers.MovementBehaviors.Dead));
 
+    
+    public void RotateTowardsPlayer()
+    {
+        var lookingDirection = GameManager.Instance.playerReference.transform.position - transform.position;
+        lookingDirection.y = 0f;
+
+        var rotation = Quaternion.LookRotation(lookingDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4);
+    }
 
 
     private void MovePosition(AIHelpers.MovementResult newMovePos)

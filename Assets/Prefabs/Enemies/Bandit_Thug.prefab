@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae9700941a96464286b63d33c86c2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  canHearPlayerRange: 12
   attackDamage: 20
   attackRange: 3
   attackSpeed: 1.2
@@ -164,7 +166,7 @@ MonoBehaviour:
   localForward: {fileID: 673240159110907752}
   attackDistance: 1
   enemyMovement: {fileID: 3120295554680268542}
-  enemyHealth: {fileID: 4491117049277934819}
+  enemyAttributes: {fileID: 0}
   ActiveMovementBehavior: 1
   activeEnemyState: 0
   targetObject: {fileID: 0}

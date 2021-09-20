@@ -59,6 +59,8 @@ public class BanditBoss_Vision : MonoBehaviour
 
     
     internal RaycastHit rayToPlayer;
+
+    [SerializeField] private EnemyAttributes bossEnemyAttributes = null;
     //private static readonly int Patrolling = Animator.StringToHash("Patrolling");
 
 
@@ -74,6 +76,9 @@ public class BanditBoss_Vision : MonoBehaviour
 
         if (!anim)
             anim = GetComponent<Animator>();
+
+        if (!bossEnemyAttributes)
+            bossEnemyAttributes = GetComponent<EnemyAttributes>();
 
         if (!player)
             player = GameManager.Instance.playerReference.transform;
@@ -160,6 +165,13 @@ public class BanditBoss_Vision : MonoBehaviour
         if (activeEnemyState == CurrentState.Dead)
             return false;
 
+        if (!bossEnemyAttributes.GetMovementStatus())
+        {
+            Debug.Log("boss can not move currently");
+
+            return false;
+        }
+            
 
         if(player)
             if (Vector3.Distance(transform.position, player.transform.position) <= 60f)

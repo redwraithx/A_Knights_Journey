@@ -63,8 +63,13 @@ public class BanditBoss_Movement : MonoBehaviour
 
         if (banditBossVision.activeEnemyState == CurrentState.Idle && banditBossVision.ActiveMovementBehavior == AIHelpers.MovementBehaviors.Idle)
             return;
-        
 
+
+        if (!enemyAttributes.GetMovementStatus())
+        {
+            return; // enemy cant move so return
+        }
+        
         transform.position = new Vector3(transform.position.x, GetComponent<CapsuleCollider>().bounds.size.y * 0.5f, transform.position.z);
         
         
@@ -356,6 +361,8 @@ public class BanditBoss_Movement : MonoBehaviour
         
         
     }
+
+        
 
     // void Update()
     // {

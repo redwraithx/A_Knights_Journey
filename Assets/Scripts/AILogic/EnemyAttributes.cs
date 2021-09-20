@@ -19,6 +19,29 @@ public class EnemyAttributes : MonoBehaviour
     
     
     
+    [SerializeField] private bool canMove = true; 
+    private bool CanMove
+    {
+        get => canMove;
+        set => canMove = value;
+    }
+
+    public void EnableMovement(bool newValue) => CanMove = newValue;
+    public bool GetMovementStatus() => CanMove; // use this to check if the enemy can move at all or is frozen
+    
+    
+    
+    
+    [SerializeField] private int canHearPlayerRange = 5; 
+    public int CanHearPlayerRange
+    {
+        get => canHearPlayerRange;
+        set => canHearPlayerRange = value;
+    }
+    
+    
+    
+    
     [SerializeField] private int attackDamage = 15; 
     private int AttackDamage
     {
